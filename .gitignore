@@ -1,0 +1,22 @@
+node_modules/
+.cache/
+dist/
+release/
+test-results/
+playwright-report/
+.DS_Store
+*.pem
+*.key
+.env*
+
+# Keep local store submissions, diagnostic captures and live browsing logs private.
+docs/*
+!docs/PUBLISHING.md
+!docs/TESTING.md
+!docs/screenshots/
+docs/screenshots/*
+!docs/screenshots/menu-footer-single.png
+!docs/screenshots/menu-footer-pair.png
+!docs/screenshots/menu-compact.png
+!docs/screenshots/custom-editor.png
+!docs/screenshots/custom-editor-saved.png

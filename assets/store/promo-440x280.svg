@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="280" viewBox="0 0 440 280">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff7fb"/><stop offset="1" stop-color="#effaff"/></linearGradient><linearGradient id="pink" x2="1" y2="1"><stop stop-color="#ff87b0"/><stop offset="1" stop-color="#f34e87"/></linearGradient></defs>
+  <rect width="440" height="280" fill="url(#bg)"/>
+  <circle cx="390" cy="0" r="130" fill="#fb7299" opacity=".07"/>
+  <circle cx="0" cy="280" r="120" fill="#00aeec" opacity=".05"/>
+  <rect x="30" y="31" width="52" height="52" rx="14" fill="url(#pink)"/>
+  <rect x="38" y="42" width="36" height="29" rx="8" fill="#fff" transform="rotate(-9 56 56)"/>
+  <path d="m48 49 8 7-8 7zm10-1 9 7-9 7z" fill="#00aeec"/>
+  <text x="98" y="64" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="700" fill="#242b39">超好用B站倍速助手</text>
+  <text x="30" y="141" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="650" fill="#242b39">看视频，随你的节奏。</text>
+  <text x="32" y="177" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#747e90">原生菜单 · 轻巧顺手 · 滑动调速</text>
+  <rect x="30" y="205" width="89" height="30" rx="15" fill="#00aeec" fill-opacity=".09"/>
+  <text x="48" y="225" font-family="sans-serif" font-size="13" font-weight="600" fill="#0099d0">0.25–10×</text>
+  <text x="133" y="225" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#8c95a3">免费 · 无广告 · 非官方 B 站扩展</text>
+</svg>

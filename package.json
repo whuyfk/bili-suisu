@@ -1,0 +1,34 @@
+{
+  "name": "bili-suisu",
+  "version": "1.9.5",
+  "private": true,
+  "description": "B 站原生倍速菜单增强，支持 0.25–10 倍滑动调速、快捷收藏与跨视频固定倍速。",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "assets": "node scripts/store-assets.mjs",
+    "typecheck": "tsc --noEmit",
+    "test:unit": "node --experimental-strip-types --test tests/*.test.ts",
+    "test:browser": "playwright test",
+    "lint:firefox": "web-ext lint --source-dir dist/firefox --warnings-as-errors",
+    "check": "npm run typecheck && npm run test:unit && npm run build && npm run lint:firefox && npm run test:browser",
+    "package": "npm run build && node scripts/package.mjs",
+    "test:live": "node scripts/live-check.mjs",
+    "test:live:fast-forward": "node scripts/live-fast-forward.mjs",
+    "test:live:unpin": "node scripts/live-unpin.mjs",
+    "test:live:navigation": "node scripts/live-navigation.mjs",
+    "test:live:menu": "node scripts/live-menu-activation.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "esbuild": "0.28.2",
+    "sharp": "0.34.5",
+    "typescript": "5.9.3",
+    "web-ext": "10.8.0"
+  }
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>播放器行为测试夹具 · 超好用B站倍速助手</title>
+<style>
+  body { margin: 0; padding: 40px; background: #f5f6f7; color: #333; font: 15px system-ui; }
+  .bpx-player-container { position: relative; width: 780px; height: 500px; background: #10141c; }
+  .bpx-player-video-wrap, video { width: 100%; height: 100%; }
+  .bpx-player-control-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 48px; background: #111c; display: flex; align-items: center; justify-content: flex-end; gap: 20px; color: #fff; padding: 0 24px; }
+  .bpx-player-ctrl-btn { position: relative; cursor: pointer; }
+  .bpx-player-ctrl-playbackrate-menu { display: none; box-sizing: content-box; position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); width: 70px; list-style: none; padding: 0; margin: 0; background: #18181beF; color: #fff; border-radius: 4px; }
+  .bpx-player-ctrl-playbackrate:hover .bpx-player-ctrl-playbackrate-menu { display: block; }
+  .bpx-player-ctrl-playbackrate-menu-item { height: 36px; line-height: 36px; text-align: center; font: 13px/36px system-ui; }
+  .bpx-player-ctrl-playbackrate-menu-item:hover { background: #ffffff17; }
+  .bpx-state-active { color: #00aeec; }
+  button { font: inherit; }
+  .web-fullscreen { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 100; }
+  .bpx-player-container:fullscreen { width: 100vw; height: 100vh; }
+</style>
+<h1>播放器行为测试</h1>
+<p>此页面是自动化测试夹具，不作为商店产品截图。</p>
+<div id="mount"></div>
+<script>
+  window.shortcutEvents = 0;
+  window.rateWrites = 0;
+  // A document-level shortcut handler catches a real integration regression:
+  // input events must never reach the player's keyboard shortcuts.
+  document.addEventListener('keydown', () => { window.shortcutEvents++; });
+  const nativeMarkup = `<div class="bpx-player-video-wrap"><video preload="auto" loop src="/sample.webm"></video></div>
+    <div class="bpx-player-control-bottom">
+      <div class="bpx-player-ctrl-btn bpx-player-ctrl-playbackrate" role="button" aria-label="倍速" tabindex="0">
+        <div class="bpx-player-ctrl-playbackrate-result">倍速</div>
+        <ul class="bpx-player-ctrl-playbackrate-menu">
+          <li class="bpx-player-ctrl-playbackrate-menu-item" data-value="2">2.0x</li>
+          <li class="bpx-player-ctrl-playbackrate-menu-item" data-value="1.5">1.5x</li>
+          <li class="bpx-player-ctrl-playbackrate-menu-item" data-value="1.25">1.25x</li>
+          <li class="bpx-player-ctrl-playbackrate-menu-item bpx-state-active" data-value="1">1.0x</li>
+          <li class="bpx-player-ctrl-playbackrate-menu-item" data-value="0.75">0.75x</li>
+          <li class="bpx-player-ctrl-playbackrate-menu-item" data-value="0.5">0.5x</li>
+        </ul>
+      </div>
+      <button id="web-fullscreen">网页全屏</button><button id="fullscreen">全屏</button>
+    </div>`;
+  window.wirePlayer = function(root) {
+    root.querySelector('.bpx-player-ctrl-playbackrate-menu').addEventListener('click', e => {
+      const item = e.target.closest('.bpx-player-ctrl-playbackrate-menu-item');
+      if (item) {
+        // Real BPX changes both properties for native choices (including 0.5x).
+        const video = root.querySelector('video');
+        video.defaultPlaybackRate = Number(item.dataset.value);
+        video.playbackRate = Number(item.dataset.value);
+      }
+    });
+    root.querySelector('#web-fullscreen').onclick = () => root.classList.toggle('web-fullscreen');
+    root.querySelector('#fullscreen').onclick = () => root.requestFullscreen();
+  };
+  window.makePlayer = function() {
+    const root = document.createElement('div');
+    root.className = 'bpx-player-container';
+    root.innerHTML = nativeMarkup;
+    window.wirePlayer(root);
+    return root;
+  };
+  document.querySelector('#mount').append(window.makePlayer());
+  window.nativeMarkup = nativeMarkup;
+</script>
+</html>

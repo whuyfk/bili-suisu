@@ -1,0 +1,289 @@
+/* Explicit closed / browse / edit states override native hover tooltips. */
+.bpx-player-ctrl-playbackrate[data-bs4-enhanced] > [data-bs4-menu] {
+  box-sizing: border-box;
+  display: none !important;
+  top: auto !important;
+  width: 96px !important;
+  max-height: min(var(--bs4-menu-height, 420px), calc(100vh - 90px)) !important;
+  height: auto !important;
+  padding: 4px 0 0;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  border-radius: 6px;
+  background: #1c1d21f2;
+  box-shadow: 0 6px 24px #0003;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff40 transparent;
+  text-align: center;
+}
+.bpx-player-ctrl-playbackrate[data-bs4-state="browse"] > [data-bs4-menu],
+.bpx-player-ctrl-playbackrate[data-bs4-state="edit"] > [data-bs4-menu] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.bpx-player-ctrl-playbackrate[data-bs4-state="edit"] > [data-bs4-menu] {
+  width: 184px !important;
+  padding: 0;
+}
+.bpx-player-ctrl-playbackrate[data-bs4-state="edit"] [data-bs4-menu] > .bpx-player-ctrl-playbackrate-menu-item {
+  display: none !important;
+}
+.bpx-player-control-bottom:has([data-bs4-state="edit"]) {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+[data-bs4-menu] [hidden] { display: none !important; }
+[data-bs4-menu] [data-bs4-rate]:focus-visible,
+[data-bs4-menu] button:focus-visible { outline: 1px solid #00aeec; outline-offset: -2px; }
+[data-bs4-menu] > [data-bs4-custom] {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  background: #1c1d21;
+  color: #e3e5e7;
+  font: 12px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+  text-align: center;
+  cursor: default;
+}
+[data-bs4-custom] button { box-sizing: border-box; margin: 0; border: 0; font: inherit; cursor: pointer; }
+[data-bs4-footer] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 36px;
+  border-top: 1px solid #ffffff12;
+}
+[data-bs4-trigger],
+[data-bs4-clear] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 32px;
+  height: 30px;
+  padding: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #949aa5;
+}
+[data-bs4-footer] button svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+[data-bs4-separator] { width: 8px; color: #555963; font-size: 14px; line-height: 1; pointer-events: none; user-select: none; }
+[data-bs4-trigger]:hover { color: #00aeec; background: #00aeec0b; }
+.bs4-custom-active [data-bs4-trigger] { color: #00aeec; }
+[data-bs4-editor] { padding: 12px 14px 14px; }
+[data-bs4-editor] label { display: block; color: #a8abb2; font-size: 11px; }
+[data-bs4-editor] .bs4-value-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+}
+[data-bs4-editor] .bs4-rate-value { display: inline-flex; align-items: baseline; gap: 3px; }
+[data-bs4-editor] output {
+  color: #fff;
+  font: 500 28px/42px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+[data-bs4-editor] .bs4-unit { color: #a8abb2; font-size: 13px; }
+[data-bs4-editor] input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  touch-action: none;
+  accent-color: #00aeec;
+}
+[data-bs4-editor] input[type="range"]:focus-visible { outline: 1px solid #00aeec; outline-offset: 3px; }
+[data-bs4-editor] input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #00aeec var(--bs4-progress), #ffffff30 var(--bs4-progress));
+}
+[data-bs4-editor] input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #00aeec;
+  box-shadow: 0 1px 5px #0005;
+}
+[data-bs4-editor] input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: #ffffff30; }
+[data-bs4-editor] input[type="range"]::-moz-range-progress { height: 4px; border-radius: 4px; background: #00aeec; }
+[data-bs4-editor] input[type="range"]::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #00aeec;
+  box-shadow: 0 1px 5px #0005;
+}
+[data-bs4-editor] input[type="range"]:active { cursor: grabbing; }
+[data-bs4-editor] .bs4-hint { display: flex; justify-content: space-between; margin-top: 1px; color: #888d96; font-size: 10px; }
+[data-bs4-editor] .bs4-actions { display: flex; gap: 8px; margin-top: 12px; }
+[data-bs4-editor] .bs4-actions button { flex: 1; height: 28px; padding: 0; border-radius: 5px; background: #ffffff0b; color: #c4c6ca; font-size: 11px; }
+[data-bs4-editor] .bs4-actions .bs4-confirm { background: #00aeec; color: #fff; font-weight: 500; }
+[data-bs4-editor] .bs4-actions button:hover { background: #ffffff0b; color: #fff; }
+[data-bs4-editor] .bs4-actions .bs4-confirm:hover { background: #25b9ef; color: #fff; }
+[data-bs4-editor] .bs4-status { margin-top: 6px; color: #f99ab8; font-size: 10px; line-height: 1.5; overflow-wrap: anywhere; }
+[data-bs4-editor] .bs4-status:empty { display: none; }
+@media (forced-colors: active) {
+  [data-bs4-editor] input[type="range"] { appearance: auto; -webkit-appearance: auto; }
+  [data-bs4-editor] output { color: CanvasText; }
+  [data-bs4-custom] button { border: 1px solid ButtonText; }
+}
+
+[data-bs4-menu] [data-bs4-saved] { position: relative; }
+[data-bs4-menu] [data-bs4-saved] button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+[data-bs4-menu] [data-bs4-saved] .bs4-choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  text-align: center;
+}
+[data-bs4-menu] [data-bs4-delete] {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  width: 20px;
+  height: 100%;
+  border-radius: 3px !important;
+  color: #888d96 !important;
+  opacity: 0;
+}
+[data-bs4-menu] [data-bs4-saved]:hover [data-bs4-delete],
+[data-bs4-menu] [data-bs4-saved]:focus-within [data-bs4-delete] {
+  opacity: 1;
+}
+[data-bs4-menu] [data-bs4-delete]::before,
+[data-bs4-menu] [data-bs4-delete]::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+[data-bs4-menu] [data-bs4-delete]::after { transform: translate(-50%, -50%) rotate(-45deg); }
+[data-bs4-menu] [data-bs4-delete]:hover { color: #ff8fab !important; background: #ffffff0e; }
+[data-bs4-save] {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #949aa5;
+}
+[data-bs4-save] svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+[data-bs4-save]:hover:enabled { color: #fb7299; background: #fb72990b; }
+[data-bs4-save][aria-pressed="true"] { color: #fb7299; }
+[data-bs4-save][aria-pressed="true"] svg { fill: currentColor; }
+[data-bs4-save]:disabled { opacity: .35; cursor: default; }
+[data-bs4-clear]:hover { color: #ff8fab; background: #ffffff08; }
+
+[data-bs4-menu] [data-bs4-pin-host] { position: relative; }
+[data-bs4-menu] [data-bs4-pin-host] > [data-bs4-pin] {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 22px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #949aa5;
+  cursor: pointer;
+}
+[data-bs4-menu] [data-bs4-pin] { opacity: 0; }
+[data-bs4-menu] [data-bs4-pin][aria-pressed="true"],
+[data-bs4-menu] [data-bs4-pin-host]:hover > [data-bs4-pin],
+[data-bs4-menu] [data-bs4-pin-host]:focus-within > [data-bs4-pin] { opacity: 1; pointer-events: auto; }
+[data-bs4-menu] [data-bs4-pin] svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: rotate(35deg);
+}
+[data-bs4-menu] [data-bs4-pin][aria-pressed="true"] { color: #00aeec; }
+[data-bs4-menu] [data-bs4-pin][aria-pressed="true"] svg { fill: currentColor; }
+[data-bs4-menu] [data-bs4-pin]:hover:enabled { color: #00aeec; background: #00aeec0b; }
+[data-bs4-menu] [data-bs4-pin]:disabled { cursor: default; }
+
+/* Keep the native long-press animation; show the actual temporary speed. */
+[data-bs4-fastforward] .bpx-player-three-playrate-hint-label,
+[data-bs4-fastforward] .bpx-player-three-playrate-hint-carousel { display: none !important; }
+[data-bs4-fastforward-label] { font: inherit; color: inherit; white-space: nowrap; }
